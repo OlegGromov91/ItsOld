@@ -10,11 +10,6 @@ import java.util.TreeMap;
 public class PhoneBook {
 
 
-    /*
-    НЕКОРРЕКТНОЕ ОТОБРАЖЕНИЕ КНИГИ КОГДА ЛИСТ
-
-    КОГДА НЕКОРРЕКТНЫЙ ВВОД ПИШЕТСЯ ДОБАВЛЕНО В СИСОК
-     */
 
         private final String REGEX_NUMBER = "^(\\+7|8)\\d{10}";
         private final String REGEX_NAME = "^[A-Я,A-Z][аА-яЯ,aA-zZ]+\\s[A-Я,A-Z][аА-яЯ,aA-zZ]+\\s[A-Я,A-Z][аА-яЯ,aA-zZ]+";
@@ -25,7 +20,7 @@ public class PhoneBook {
         private String phoneBookNumber;
 
         private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        private Map<String, String> phoneBook = new TreeMap<String, String>();
+        private Map<String, String> phoneBook = new TreeMap<>();
 
         public void mainCycle () throws IOException
         {//Основной метод программы
@@ -123,20 +118,27 @@ public class PhoneBook {
                 String key = pair.getKey();
                 String value = pair.getValue();
                 if(key.equals(input)|| value.equals(input)){
-                    System.out.println("ФИО: " + key + " Номер: " + value);
+                    System.out.println("--Контакт имеется в списке------------------------------------------------");
+                    System.out.println("|| ФИО: || "  + key  + " || Номер: || "  + value + " || ");
+                    System.out.println("--------------------------------------------------------------------------");
                 }}
 
         }
 
         private void list ()
         {//Метод печатает книгу
+            if(phoneBook.size() == 0)
+            {
+                System.out.println("Книга еще пуста");
+            }
+            else {
             System.out.println("-------------------------Телефонная книга---------------------------------");
             for (Map.Entry<String, String> entry : phoneBook.entrySet()) {
                 System.out.println("--------------------------------------------------------------------------");
                 System.out.println("|| ФИО: || "  + entry.getKey()  + " || Номер: || "  + entry.getValue() + " || ");
                 System.out.println("--------------------------------------------------------------------------");
             }
-        }
+        }}
 
         private void describe ()
         {
