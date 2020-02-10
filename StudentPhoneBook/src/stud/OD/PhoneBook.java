@@ -37,12 +37,14 @@ public class PhoneBook {
                 {   //Если пользователь ввел номер, просим ввести имя и добавляем все в тел.Книгу
                     getNubberThenName(input);
                     mapPutIn();
+
                 }
 
                 else if (input.matches(REGEX_NAME))
                 {//Если пользователь ввел имя, просим ввести номер и добавляем все в тел.Книгу
                     getNameThenNumber(input);
                     mapPutIn();
+
                 }
 
                 else if (input.matches(LIST))
@@ -65,7 +67,8 @@ public class PhoneBook {
         private void mapPutIn ()
         {// Метод записывает имя и телефон в книгу
             if(phoneBookNumber.matches(REGEX_NUMBER) && phoneBookName.matches(REGEX_NAME)){
-                phoneBook.put(phoneBookName, phoneBookNumber);}
+                phoneBook.put(phoneBookName, phoneBookNumber);
+                System.out.println("Ок...");}
             else {
                 System.out.println("Некорректный ввод");}
         }
@@ -81,7 +84,7 @@ public class PhoneBook {
                 System.out.println("Введите имя");
                 String inputName = bufferedReader.readLine();
                 setName(inputName);  //Сохраняем имя
-                System.out.println("Добавленно в телефонную книгу");
+
             }}
 
         private void getNameThenNumber (String input) throws IOException
@@ -96,7 +99,7 @@ public class PhoneBook {
                 System.out.println("Введите номер");
                 String inputNumbr = bufferedReader.readLine();
                 setNumber(inputNumbr);   //Сохраняем номер
-                System.out.println("Добавленно в телефонную книгу");
+
             }}
 
         private void setName (String input)
